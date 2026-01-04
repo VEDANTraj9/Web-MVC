@@ -9,24 +9,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+@Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "learning.mvc")
-@Configuration
 public class SpringConfiguration implements WebMvcConfigurer {
 
-	@Bean
-	public ViewResolver viewResolver() {
-		System.out.println("SpringConfiguration.viewResolver()");
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-// It specifies that JSTL views should be used.
-//JstlView is a class provided by the Spring framework that is specifically designed to handle JSP pages using JSTL.
-		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/JSP/");
-		viewResolver.setSuffix(".jsp");
+    @Bean
+    public ViewResolver viewResolver() {
+        System.out.println("SpringConfiguration.viewResolver()");
 
-		return viewResolver;
-	}
+        InternalResourceViewResolver vr =
+                new InternalResourceViewResolver();
+        vr.setViewClass(JstlView.class);
+        vr.setPrefix("/WEB-INF/JSP/");
+        vr.setSuffix(".jsp");
 
-	
-
+        return vr;
+    }
 }
