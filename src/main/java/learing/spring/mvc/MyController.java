@@ -2,26 +2,20 @@ package learing.spring.mvc;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import learing.spring.model.Admin;
 
 @Controller
-@RequestMapping("/footwear")
 public class MyController {
 	
-	@RequestMapping
-	public String greetings()
+	@GetMapping("/")
+	@ResponseBody
+	public Admin admin()
 	{
-		System.out.println("MyController.greetings()");
-		return "footwear-home";
-	}
-	
-
-	
-	
-	@RequestMapping(value = {"/admin"})
-	public String admin()
-	{
+		Admin vikas = new Admin("Vikas singh","vk111");
 		System.out.println("MyController.admin()");
-		return "admin";
+		return vikas;
 	}
 }
